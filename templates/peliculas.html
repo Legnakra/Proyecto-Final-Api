@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Filmografía{% endblock %}
+{% block content %}
+    <section id="two">
+        <div class="inner">
+            <header class="major">
+                <h2>Listado</h2>
+            </header>
+                <table class="tg">
+                    <tr>
+                        <th class="tg-hst0"><br>TÍTULO</br></th>
+                        <th class="tg-hst0"></th>
+                    </tr>
+                        {% for i in peliculas %}
+                        <tr>
+                            <th class="tg-rkfb"><br>{{i}}</br></th>
+                            <th class="tg-rkfb"><a href="/detalle/{{i.replace(" ","_")}}">Detalle</a></th>
+                        </tr>
+                        {% endfor %}  
+                </table>
+        </div>
+    </section>
+{% endblock %}
