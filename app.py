@@ -33,4 +33,17 @@ payload = {'api_key':key,'countryCode':code}
 def inicio():
 	return render_template("inicio.html")
 
+#Definir ruta categorias
+@app.route('/peliculas',methods=["GET"])
+def peliculas():
+	r= requests.get(url_base2+"films")
+	if r.status_code==200:
+		lista_peliculas=[]
+		for pelicula in r.json():
+			lista_peliculas.append(pelicula.get('title'))
+		print (lista_peliculas)
+		return render_template("peliculas.html",peliculas=lista_peliculas)
+	else:
+		abort(404)
+
 app.run('0.0.0.0', debug=False) 
