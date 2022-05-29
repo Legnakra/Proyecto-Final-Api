@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{{ titulo }}{% endblock %}
+{% block content %}
+<section id="two">
+    <div class="inner">
+        <header class="major">
+            <h2>{{ titulo }}</h2>
+        </header>
+        <section id="three">
+            <div style="width: 20%; float:left">
+                <div class="filaA"><img src="{{ poster }}" alt="{{ pelicula.title }}" width="375" height="523"></div>
+            </div>
+            <div style="width: 3%; float:left">
+                <div class="filaA"></div>
+            </div>
+            <div style="background:rgba(79, 77, 117, 0.74);text-align: center">
+                <div class="filaB;text-align: center;"></div>
+                    <br><b>Titulo original</b>: {{ original }}</br> 
+                    <br><b>Titulo romanizado</b>: {{ romanised }}</br>
+                    <br><b>Fecha de estreno</b>: {{ release_date }}</br>
+                    <br><b>Director</b>: {{ director }}</br>
+                    <br><b>Productor</b>: {{ producer }}</br>
+                    <br><b>Duración</b>: {{ duracion }} min</br>
+                    <br><b>Puntuación</b>: {{ puntuacion }} %</br>
+                    <br><b>Sinopsis</b>: {{ descripcion }}</br>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+{% endblock %}
