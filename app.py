@@ -45,5 +45,5 @@ def peliculas():
 		return render_template("peliculas.html",peliculas=lista_peliculas)
 	else:
 		abort(404)
-
-app.run('0.0.0.0', debug=False) 
+port=os.environ["PORT"]
+app.run('0.0.0.0',int(port), debug=False) 
