@@ -11,7 +11,7 @@ La api recolectará información acerca de las películas animadas de Studio Ghi
 
 ### Servicios empleados
 Las APIs empleadas para realizar este proyecto son:
-* [TheMovieDB](https://www.themoviedb.org/) cuyos recursos que nos podemos encontrar son::
+* [TheMovieDB](https://www.themoviedb.org/) cuyos recursos que nos podemos encontrar son:
 	* [Documentación](https://developers.themoviedb.org/3/getting-started/introduction).
 	* [Foro de soporte](https://www.themoviedb.org/talk/category/5047958519c29526b50017d6).
 	* [API Wrappers y Librerias](https://www.themoviedb.org/documentation/api/wrappers-libraries).
