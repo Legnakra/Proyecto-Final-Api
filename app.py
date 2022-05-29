@@ -41,5 +41,28 @@ def peliculas():
 		return render_template("peliculas.html",peliculas=lista_peliculas)
 	else:
 		abort(404)
+
+#Definir ruta detalle
+@app.route('/detalle/<title>',methods=["GET"])
+def detalle(title):
+	title=title.replace("_"," ")
+	r= requests.get(url_base2+"films")
+	if r.status_code==200:
+		for pelicula in r.json():
+			if pelicula.get('title')==title:
+				titulo=pelicula.get('title')
+				tit_original=pelicula.get('original_title')
+				poster=pelicula.get('image')
+				romanised=pelicula.get('original_title_romanised')
+				release_date=pelicula.get('release_date')
+				director=pelicula.get('director')
+				producer=pelicula.get('producer')
+				duracion=pelicula.get('running_time')
+				puntuacion=pelicula.get('rt_score')
+				descripcion=pelicula.get('description')
+				return render_template("detalle.html",pelicula=pelicula,original=tit_original,poster=poster,titulo=titulo,romanised=romanised,release_date=release_date,director=director,producer=producer,duracion=duracion,puntuacion=puntuacion,descripcion=descripcion)
+		else:
+			abort(404)
+			
 port=os.environ["PORT"]
 app.run('0.0.0.0',int(port), debug=False) 
