@@ -11,10 +11,6 @@ import json
 #Variable app por flask
 app = Flask(__name__)
 
-#Leer fichero json
-with open('peliculas.json') as films:
-	data = json.load(films)
-
 #Guardamos la url base
 url_base="https://api.themoviedb.org/3/"
 url_base2="https://ghibliapi.herokuapp.com/"
