@@ -1916,7 +1916,7 @@ input, select, textarea {
 		-ms-appearance: none;
 		appearance: none;
 		background: rgba(47, 120, 149, 0.36)
-		border: #000;
+		border: #000000;
 		border-radius: 0;
 		color: inherit;
 		display: block;
