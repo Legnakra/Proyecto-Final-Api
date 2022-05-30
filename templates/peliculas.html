@@ -1,6 +1,29 @@
 {% extends "base.html" %}
 {% block title %}Filmografía{% endblock %}
 {% block content %}
+<section id="two">
+    <div class="inner">
+        <header class="major">
+            <h1>Buscador</h1>
+        </header>
+        <div class="content">
+           <div class="row">
+              <div class="col-md-10 offset-md-1">
+                 <form id="request" class="main_form" action="/peliculas" method="POST">
+                    <div class="row">
+                       <div class="col-md-12 ">
+                          <input class="contactus" placeholder="Nombre de la pelicula" type="text" name="title" value="{{nombre}}"> 
+                       </div>
+                       <div class="col-md-12">
+                          <button class="send_btn">Buscar</button>
+                       </div>
+                    </div>
+                 </form>
+              </div>
+           </div>
+        </div>
+    </section>
+    {% if pelicula %}
     <section id="two">
         <div class="inner">
             <header class="major">
@@ -8,16 +31,29 @@
             </header>
                 <table class="tg">
                     <tr>
-                        <th class="tg-hst0"><br>TÍTULO</br></th>
+                        <th class="tg-hst0">Nombre</th>
                         <th class="tg-hst0"></th>
                     </tr>
-                        {% for i in peliculas %}
-                        <tr>
-                            <th class="tg-rkfb"><br>{{i}}</br></th>
-                            <th class="tg-rkfb"><a href="/detalles/{{i.replace(" ","_")}}">Detalles</a></th>
-                        </tr>
-                        {% endfor %}  
+                        {% for i in pelicula %}
+                                <tr>
+                                    <th class="tg-rkfb">{{i}}</th>
+                                    <th class="tg-rkfb"><a href="/detalles/{{i.replace(' ','_')}}">Detalles</a></th>
+                                </tr>
+                        {% endfor %}
                 </table>
         </div>
     </section>
+    {% elif pelicula %}
+        <section class="about"> 
+            <div class="container">
+                <div class="row d_flex">
+                    <div class="col-md-5">
+                        <div class="titlepage">
+                            <h2>Sin coincidencias.</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
 {% endblock %}

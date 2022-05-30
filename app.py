@@ -30,17 +30,28 @@ def inicio():
 	return render_template("inicio.html")
 
 #Definir ruta categorias
-@app.route('/peliculas',methods=["GET"])
+@app.route('/peliculas',methods=["GET","POST"])
 def peliculas():
-	r= requests.get(url_base2+"films")
-	if r.status_code==200:
-		lista_peliculas=[]
-		for pelicula in r.json():
-			lista_peliculas.append(pelicula.get('title'))
-		print (lista_peliculas)
-		return render_template("peliculas.html",peliculas=lista_peliculas)
-	else:
-		abort(404)
+    lista_peliculas=[]
+    directores=[]
+    directores.append("")
+    r= requests.get(url_base2+"films")
+    if r.status_code==200:
+        for i in r.json():
+            if i.get('director') not in directores:
+                directores.append(i.get('director'))
+        directores.sort()
+    if request.method=="GET":
+        return render_template("peliculas.html",directores=directores)
+    else:
+        nombre=request.form.get('title')
+        director=request.form.get('director')
+        if r.status_code==200:
+            for i in r.json():
+                if (nombre == "" or i['title'].startswith(nombre)):
+                    lista_peliculas.append(i.get('title'))
+            return render_template("peliculas.html", pelicula=lista_peliculas, director=director, nombre=nombre, directores=directores)
+        return render_template("peliculas.html",directores=directores,director=director,nombre=nombre,pelicula=lista_peliculas)
 
 #Definir ruta detalle
 @app.route('/detalles/<title>',methods=["GET"])
