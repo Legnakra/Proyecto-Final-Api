@@ -43,7 +43,7 @@ def peliculas():
 		abort(404)
 
 #Definir ruta detalle
-@app.route('/detalle/<title>',methods=["GET"])
+@app.route('/detalles/<title>',methods=["GET"])
 def detalle(title):
 	title=title.replace("_"," ")
 	r= requests.get(url_base2+"films")
